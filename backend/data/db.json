@@ -70,6 +70,25 @@
         "lat": 20.5952,
         "lng": 78.9644
       }
+    },
+    {
+      "_id": "mock_5vrn6qxhq",
+      "createdAt": "2026-05-23T05:34:39.584Z",
+      "updatedAt": "2026-05-23T05:34:39.584Z",
+      "role": "customer",
+      "name": "Abhista Bharti",
+      "email": "abhista2401b@gmail.com",
+      "password": "$2b$10$AGpBBsCPXH6.FuxUzMmYGO5Z35xo9nunyKTwiRrJ/C..9dFwnV7j6",
+      "address": {
+        "area": "ksnkdfksf",
+        "locality": "d jdbgiig",
+        "pincode": "400094",
+        "state": "Maharashtra"
+      },
+      "location": {
+        "lat": 20.603099999999998,
+        "lng": 78.9723
+      }
     }
   ],
   "foodlistings": [
