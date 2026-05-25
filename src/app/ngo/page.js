@@ -97,7 +97,7 @@ export default function NGOPage() {
     setToast({ text: '', type: '' });
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/place', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/place`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -145,7 +145,7 @@ export default function NGOPage() {
   const handleUpdateClaimStatus = async (orderId, nextStatus) => {
     setUpdateStatusLoadingId(orderId);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/update-status', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/update-status`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

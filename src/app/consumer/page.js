@@ -73,7 +73,7 @@ export default function ConsumerPage() {
     setToast({ text: '', type: '' });
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/place', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/place`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

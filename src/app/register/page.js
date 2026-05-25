@@ -129,13 +129,9 @@ function RegisterContent() {
     if (role && !ROLES[role]) router.replace('/register');
   }, [role, router]);
 
-  /* geolocation */
+  /* geolocation — not used in current address form */
   const detectLocation = () => {
-    setLocating(true);
-    navigator.geolocation?.getCurrentPosition(
-      (p) => { setLat(p.coords.latitude.toFixed(6)); setLng(p.coords.longitude.toFixed(6)); setLocating(false); },
-      () => { setLocating(false); }
-    );
+    // Address-based geocoding handled server-side via Nominatim
   };
 
   /* cert file */
@@ -179,7 +175,7 @@ function RegisterContent() {
         ...(role === 'ngo' && { ngo_id: ngoId, certificate: certFile }),
       };
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

@@ -101,7 +101,7 @@ export default function RestaurantPage() {
     setUploadLoading(true);
     setStatusMsg({ text: '', type: '' });
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/food/upload', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/food/upload`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -134,7 +134,7 @@ export default function RestaurantPage() {
   const handleUpdateOrderStatus = async (orderId, newStatus) => {
     setOrderStatusLoading(orderId);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/update-status', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/update-status`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ order_id: orderId, status: newStatus })
