@@ -53,7 +53,7 @@ export default function RestaurantPage() {
     if (!user) return;
     setLoadingListings(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/food/listings?restaurant_id=${user.id}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/food/listings?restaurant_id=${user.id}`);
       if (res.ok) setListings(await res.json());
     } catch (err) { console.error(err); }
     finally { setLoadingListings(false); }
@@ -64,7 +64,7 @@ export default function RestaurantPage() {
     if (!user) return;
     setLoadingOrders(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/order/restaurant/${user.id}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/restaurant/${user.id}`);
       if (res.ok) setOrders(await res.json());
     } catch (err) { console.error(err); }
     finally { setLoadingOrders(false); }
@@ -101,7 +101,7 @@ export default function RestaurantPage() {
     setUploadLoading(true);
     setStatusMsg({ text: '', type: '' });
     try {
-      const res = await fetch('http://localhost:5000/api/food/upload', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/food/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -134,7 +134,7 @@ export default function RestaurantPage() {
   const handleUpdateOrderStatus = async (orderId, newStatus) => {
     setOrderStatusLoading(orderId);
     try {
-      const res = await fetch('http://localhost:5000/api/order/update-status', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/update-status', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ order_id: orderId, status: newStatus })

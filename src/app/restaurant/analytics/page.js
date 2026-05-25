@@ -101,8 +101,8 @@ export default function RestaurantAnalyticsPage() {
       setLoading(true);
       try {
         const [ordRes, lstRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/order/restaurant/${user.id}`),
-          fetch(`http://localhost:5000/api/food/listings?restaurant_id=${user.id}`)
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/restaurant/${user.id}`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/food/listings?restaurant_id=${user.id}`)
         ]);
         if (ordRes.ok) setOrders(await ordRes.json());
         if (lstRes.ok) setListings(await lstRes.json());

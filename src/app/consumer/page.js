@@ -41,7 +41,7 @@ export default function ConsumerPage() {
     async function fetchListings() {
       setLoading(true);
       try {
-        let url = `http://localhost:5000/api/food/listings?lat=${user.location.lat}&lng=${user.location.lng}&type=paid`;
+        let url = `${process.env.NEXT_PUBLIC_API_URL}/api/food/listings?lat=${user.location.lat}&lng=${user.location.lng}&type=paid`;
         
         if (category !== 'all') {
           url += `&category=${category}`;
@@ -73,7 +73,7 @@ export default function ConsumerPage() {
     setToast({ text: '', type: '' });
 
     try {
-      const res = await fetch('http://localhost:5000/api/order/place', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/place', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

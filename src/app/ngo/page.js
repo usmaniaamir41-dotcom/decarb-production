@@ -45,7 +45,7 @@ export default function NGOPage() {
     if (!user) return;
     setLoadingDonations(true);
     try {
-      let url = `http://localhost:5000/api/food/listings?lat=${user.location.lat}&lng=${user.location.lng}&type=donation`;
+      let url = `${process.env.NEXT_PUBLIC_API_URL}/api/food/listings?lat=${user.location.lat}&lng=${user.location.lng}&type=donation`;
       if (category !== 'all') {
         url += `&category=${category}`;
       }
@@ -70,7 +70,7 @@ export default function NGOPage() {
     if (!user) return;
     setLoadingClaims(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/order/user/${user.id}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/user/${user.id}`);
       if (res.ok) {
         const data = await res.json();
         setClaims(data);
@@ -97,7 +97,7 @@ export default function NGOPage() {
     setToast({ text: '', type: '' });
 
     try {
-      const res = await fetch('http://localhost:5000/api/order/place', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/place', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -145,7 +145,7 @@ export default function NGOPage() {
   const handleUpdateClaimStatus = async (orderId, nextStatus) => {
     setUpdateStatusLoadingId(orderId);
     try {
-      const res = await fetch('http://localhost:5000/api/order/update-status', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/order/update-status', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

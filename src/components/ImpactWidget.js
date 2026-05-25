@@ -9,7 +9,7 @@ export default function ImpactWidget({ userId, restaurantId, refreshTrigger }) {
   useEffect(() => {
     async function fetchStats() {
       try {
-        let url = 'http://localhost:5000/api/analytics/stats';
+        let url = `${process.env.NEXT_PUBLIC_API_URL}/api/analytics/stats';
         const params = [];
         if (userId) params.push(`user_id=${userId}`);
         if (restaurantId) params.push(`restaurant_id=${restaurantId}`);
